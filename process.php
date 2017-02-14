@@ -3,6 +3,11 @@ require_once("utils.php");
 require_once("ParseAnalyzer.php");
 
 $code = $_REQUEST['code'];
+
+if(strpos($code, "<?php") === false) {
+    $code = "<?php\n" . $code;
+}
+
 echo "<p><a href='index.php'>Go back to form.</a> </p>";
 echo "<p><strong>Here's the php code you're trying to to analyse the syntax:</strong></p>";
 echo generate_displayable_php_code($code);
